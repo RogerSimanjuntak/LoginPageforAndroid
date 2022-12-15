@@ -16,14 +16,15 @@ public class DbHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     public DbHelper(Context context) {
-        super(context, database_name, null, 2);
+        super(context, database_name, null, 1);
         db = getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE" + table_name +"(" + row_id+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-        + row_email+"TEXT,"+ row_username + "TEXT," + row_password + "TEXT )";
+        String query = "CREATE TABLE " + table_name +"(" + row_id+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
+        + row_email+" TEXT,"+ row_username + " TEXT," + row_password + " TEXT);";
+        db.execSQL(query);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public boolean checkUser (String username, String password){
         String[] columns = {row_id};
         SQLiteDatabase db = getReadableDatabase();
-        String selection =   row_username +"=?" +"and" + row_password +"=?";
+        String selection =   row_username +"=?" +" and " + row_password +"=?";
         String[] selectionArgs = {username,password};
         Cursor cursor = db.query(table_name,columns,selection,selectionArgs,null,null,null);
         int count = cursor.getCount();
