@@ -1,5 +1,7 @@
 package com.example.loginpage;
 
+import static android.text.Html.fromHtml;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,12 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import db.DbHelper;
 
 
 public class MainActivity extends AppCompatActivity {
-    EditText username;
-    EditText password;
+    EditText Txusername;
+    EditText Txpassword;
+    DbHelper DbHelper;
     Button loginButton;
     
 
@@ -21,26 +27,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        loginButton = findViewById(R.id.loginButton);
+        Txusername = (EditText) findViewById(R.id.Txusername);
+        Txpassword = (EditText)findViewById(R.id.Txpassword);
+        loginButton = (Button)findViewById(R.id.loginButton);
+        DbHelper = new DbHelper(this);
 
+        TextView daftarText = (TextView)findViewById(R.id.daftarText) ;
+        daftarText.setText(fromHtml("<font>Belum Punya Akun?" +
+                "</font><font color ='#FF000'><i>Segera Daftar Disini</i></font>"));
+        daftarText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+            }
+        });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("roger")&& password.getText().toString().equals("1234")){
-                    Toast.makeText(MainActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity.this, "Login Gagal", Toast.LENGTH_SHORT).show();
-                }
+                String username = Txusername.getText().toString().trim();
+                String password = Txpassword.getText().toString().trim();
+                Boolean res= DbHelper.checkUser(username,password);
+            if(res == true){
+                Toast.makeText(MainActivity.this, "Login Succesful", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,HomeActivity.class));
+            }else{
+                Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+            }
             }
         });
 
     }
 
-    public void toDaftar(View view) {
-        Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
-        startActivity(intent);
-    }
+
 }
