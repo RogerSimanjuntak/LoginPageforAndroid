@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + table_name +"(" + row_id+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
-        + row_email+" TEXT,"+ row_username + " TEXT," + row_password + " TEXT);";
+                + row_email+" TEXT,"+ row_username + " TEXT," + row_password + " TEXT);";
         db.execSQL(query);
     }
 
@@ -50,7 +50,6 @@ public class DbHelper extends SQLiteOpenHelper {
             return true;
         else
             return false;
-    }
-
+}
 
 }
