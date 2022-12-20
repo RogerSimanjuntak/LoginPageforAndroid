@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public boolean onOptionsItemSelected(MenuItem item) {
-        startActivity(new Intent(this,aboutActivity.class));
+        startActivity(new Intent(this,UserActivity.class));
         return true;
     }
 }

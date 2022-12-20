@@ -51,5 +51,8 @@ public class DbHelper extends SQLiteOpenHelper {
         else
             return false;
 }
+        public boolean datauser(String username, String password, String email){
 
+        return true;
+}
 }
