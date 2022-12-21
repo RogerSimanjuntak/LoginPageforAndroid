@@ -4,6 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+
+import model.user;
+
 public class DbHelper extends SQLiteOpenHelper {
 
     public static final String database_name="db_user";
@@ -54,5 +59,25 @@ public class DbHelper extends SQLiteOpenHelper {
         public boolean datauser(String username, String password, String email){
 
         return true;
+}
+
+public ArrayList<user> searchUser(String email){
+        ArrayList<user> arraylist = new ArrayList<>();
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM "+table_name+" WHERE username='"+email+"'",null);
+        cursor.moveToFirst();
+        user user;
+        if(cursor.getCount()>0){
+            do {
+                user = new user();
+                user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(row_id)));
+                user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(row_email)));
+                user.setName(cursor.getString(cursor.getColumnIndexOrThrow(row_username)));
+                user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(row_password)));
+                arraylist.add(user);
+                cursor.moveToNext();
+            } while(!cursor.isAfterLast());
+        }
+        cursor.close();
+        return arraylist;
 }
 }
