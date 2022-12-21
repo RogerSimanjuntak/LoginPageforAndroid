@@ -77,14 +77,14 @@
     <TextView
         android:id="@+id/daftarText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginBottom="2dp"
+        android:onClick="toDaftar"
         android:padding="8dp"
         android:text="Belum Punya Akun?"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        android:onClick="toDaftar"/>
+        android:textSize="14sp" />
 
 
 </LinearLayout>

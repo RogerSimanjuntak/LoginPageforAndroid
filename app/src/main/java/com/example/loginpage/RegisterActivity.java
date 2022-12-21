@@ -3,7 +3,7 @@ package com.example.loginpage;
 import static android.text.Html.fromHtml;
 
 import android.content.ContentValues;
-
+import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -72,5 +72,10 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
    });
+        Toolbar ToolBarAtas2 = (Toolbar)findViewById(R.id.backToLogin);
+        setSupportActionBar(ToolBarAtas2);
 
+        ToolBarAtas2.setLogoDescription(getResources().getString(R.string.register));
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 }}

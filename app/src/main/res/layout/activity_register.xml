@@ -6,8 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity=""
     android:background="@drawable/loginbkg">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/backToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:minHeight="?attr/actionBarSize"
+        android:textAlignment="center"
+        android:theme="@style/AppTheme.AppBarOverlay" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

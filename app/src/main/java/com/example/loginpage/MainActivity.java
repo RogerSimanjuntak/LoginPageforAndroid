@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         DbHelper = new DbHelper(this);
 
         TextView daftarText = (TextView)findViewById(R.id.daftarText) ;
-        daftarText.setText(fromHtml("<font>Belum Punya Akun?" +
-                "</font><font color ='#FF000'><i>Segera Daftar Disini</i></font>"));
+        daftarText.setText(fromHtml("<font color ='#000000'>Belum Punya Akun? </font>" +
+                "<font color ='#FF000'><i>Segera Daftar Disini</i></font>"));
         daftarText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
             }
         });
+
 
     }
 

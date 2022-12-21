@@ -69,7 +69,7 @@ public class DbHelper extends SQLiteOpenHelper {
         if(cursor.getCount()>0){
             do {
                 user = new user();
-                user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(row_id)));
+                user.setId(cursor.getString(cursor.getColumnIndexOrThrow(row_id)));
                 user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(row_email)));
                 user.setName(cursor.getString(cursor.getColumnIndexOrThrow(row_username)));
                 user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(row_password)));
