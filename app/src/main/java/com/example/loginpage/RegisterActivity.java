@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import db.DbHelper;
+
 import model.user;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     values.put(DbHelper.row_username, username);
                     values.put(DbHelper.row_password, password);
+                    values.put(DbHelper.row_email, email);
                     DbHelper.insertData(values);
                     user u = new user ();
                     u.setEmail(emailstr);
@@ -69,6 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        });
+   });
 
-    }}
+}}

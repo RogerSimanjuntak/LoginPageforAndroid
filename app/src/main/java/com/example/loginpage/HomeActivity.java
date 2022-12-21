@@ -26,7 +26,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public boolean onOptionsItemSelected(MenuItem item) {
-        startActivity(new Intent(this,UserActivity.class));
+        Bundle extras = getIntent().getExtras();
+        String email = extras.getString("email");
+        Intent intent = new Intent(this,UserActivity.class);
+        intent.putExtra("email",email);
+        startActivity(intent);
         return true;
-    }
+}
 }
